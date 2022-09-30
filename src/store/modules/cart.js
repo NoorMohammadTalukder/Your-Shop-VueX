@@ -1,4 +1,5 @@
 export default{
+  namespaced:true,
     state(){
         return{
            items: [], 
@@ -8,8 +9,8 @@ export default{
     },
     mutations:{
         addProductToCart(state,payload) {
-            const productData=payload.product;
-            const productInCartIndex = state.cart.items.findIndex(
+            const productData=payload;
+            const productInCartIndex = state.items.findIndex(
               (ci) => ci.productId === productData.id
             );
       

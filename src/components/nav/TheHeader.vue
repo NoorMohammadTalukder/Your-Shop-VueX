@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>
-      <router-link to="/">VueShop</router-link>
+      <router-link to="/">Your Shop</router-link>
     </h1>
     <nav>
       <ul>
@@ -10,7 +10,7 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
-          <base-badge mode="elegant">{{ cart.qty }}</base-badge>
+          <base-badge mode="elegant">Total Added Product: {{Quantity}}</base-badge>
         </li>
         <li v-if="isLoggedIn">
           <router-link to="/admin">Admin</router-link>
@@ -26,7 +26,13 @@
 
 <script>
 export default {
-  inject: ['isLoggedIn', 'login', 'logout', 'cart'],
+  computed:{
+    Quantity(){
+      console.log(this.$store.getters['cart/quantity']);
+      return this.$store.getters['cart/quantity'];
+      // return this.$store.getters['prods/products'];
+    }
+  }
 };
 </script>
 
