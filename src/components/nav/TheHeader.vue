@@ -20,6 +20,8 @@
     <div>
       <button v-if="!isLoggedIn" @click="login">Login</button>
       <button v-if="isLoggedIn" @click="logout">Logout</button>
+      <!-- <button  @click="login">Login</button>
+      <button  @click="logout">Logout</button> -->
     </div>
   </header>
 </template>
@@ -31,7 +33,22 @@ export default {
       console.log(this.$store.getters['cart/quantity']);
       return this.$store.getters['cart/quantity'];
       // return this.$store.getters['prods/products'];
+    },
+    isLoggedIn(){
+      return this.$store.getters.isAuthenticated;
     }
+  },
+  methods:{
+    login(){
+     
+    this.$store.dispatch('login');
+    // alert(this.isLoggedIn)
+  },
+    logout(){
+    this.$store.dispatch('logout');
+    // alert(this.isLoggedIn)
+    
+  },
   }
 };
 </script>
